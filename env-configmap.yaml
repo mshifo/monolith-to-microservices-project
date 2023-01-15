@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  FWD_POSTGRES_HOST: database-1.ctnnkbguiwet.us-east-1.rds.amazonaws.com
+  FWD_POSTGRES_DB: postgres
+  FWD_AWS_BUCKET: my-201848045895-bucket
+  FWD_AWS_REGION: us-east-1
+  FWD_AWS_PROFILE: default
+  FWD_JWT_SECRET: testing
+  FWD_URL: http://aff0f84a4018947d88c4a85d0fe9368f-1114445160.us-east-1.elb.amazonaws.com
+metadata:
+  name: env-config

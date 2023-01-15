@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-user
+spec:
+  selector:
+    matchLabels:
+      service: backend-user
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        service: backend-user
+    spec:
+      containers:
+      - name: backend-user
+        image: shifo/udagram-api-user:v1
+        env:
+        - name: FWD_URL
+          value: "http://aff0f84a4018947d88c4a85d0fe9368f-1114445160.us-east-1.elb.amazonaws.com"
+        - name: FWD_AWS_BUCKET
+          value: "my-201848045895-bucket"
+        - name: FWD_AWS_PROFILE
+          value: "default"
+        - name: FWD_AWS_REGION
+          value: "us-east-1"
+        - name: FWD_JWT_SECRET
+          value: "testing"
+        - name: FWD_POSTGRES_DB
+          value: "postgres"
+        - name: FWD_POSTGRES_HOST
+          value: "database-1.ctnnkbguiwet.us-east-1.rds.amazonaws.com"
+        - name: FWD_POSTGRES_PASSWORD
+          value: "postgres"
+        - name: FWD_POSTGRES_USERNAME
+          value: "postgres"
+        #- name: DB_PASSWORD
+        # valueFrom:
+        #    secretKeyRef:
+        #      name: my-secret
+        #      key: db-password
